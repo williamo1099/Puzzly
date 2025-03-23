@@ -4,7 +4,7 @@ import PuzzlePage from "./pages/Puzzle";
 
 function App() {
   return (
-    <div className="w-screen h-screen flex justify-center items-center text-base">
+    <div className="w-screen h-screen flex justify-center items-center text-base font-roboto">
       <Router>
         <Routes>
           <Route path="/" element={<PuzzlePage />} />
