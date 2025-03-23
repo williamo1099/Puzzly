@@ -3,14 +3,13 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 import usePuzzleStore from "../store/usePuzzleStore";
+import { LEVELS } from "../constants/levels";
 import { LEVEL_MESSAGES } from "../constants/levelMessages";
 
 function LevelPicker() {
   const setLevel = usePuzzleStore((state) => state.setLevel);
   const [selectedLevel, setSelectedLevel] = useState("Easy");
-  const [levelMessage, setLevelMessage] = useState(
-    "Take it easy! Perfect for a chill puzzle session. 😌"
-  );
+  const [levelMessage, setLevelMessage] = useState(LEVEL_MESSAGES[LEVELS[0]]);
 
   const handleLevelChange = (level) => {
     setLevel(level);
@@ -36,7 +35,7 @@ function LevelPicker() {
           transition={{ duration: 0.1, ease: "linear" }}
         />
 
-        {["Easy", "Medium", "Hard"].map((level) => (
+        {LEVELS.map((level) => (
           <div
             key={level}
             onClick={() => handleLevelChange(level)}
