@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 import usePuzzleStore from "../store/usePuzzleStore";
+import { LEVEL_MESSAGES } from "../constants/levelMessages";
 
 function LevelPicker() {
   const setLevel = usePuzzleStore((state) => state.setLevel);
@@ -15,13 +16,7 @@ function LevelPicker() {
     setLevel(level);
     setSelectedLevel(level);
 
-    const messages = {
-      Easy: "Take it easy! Perfect for a chill puzzle session. 😌",
-      Medium: "Time to step it up! Get ready for a challenge. 💪",
-      Hard: "Brace yourself! This one's a real brain-teaser. 🧠",
-    };
-
-    setLevelMessage(messages[level]);
+    setLevelMessage(LEVEL_MESSAGES[level]);
   };
 
   return (
