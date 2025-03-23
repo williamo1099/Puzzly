@@ -1,8 +1,16 @@
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+import PuzzlePage from "./pages/Puzzle";
+
 function App() {
   return (
-    <>
-      <span className="text-primary font-bold">Hello</span>
-    </>
+    <div className="w-screen h-screen flex justify-center items-center text-base">
+      <Router>
+        <Routes>
+          <Route path="/" element={<PuzzlePage />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
