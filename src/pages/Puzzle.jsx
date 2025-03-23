@@ -1,12 +1,11 @@
 import React from "react";
-import Button from "../components/Button";
-import ImageUploader from "../components/ImageUploader";
-import LevelPicker from "../components/LevelPicker";
+
+import usePuzzleStore from "../store/usePuzzleStore";
+import PuzzleInputContainer from "../components/PuzzleInputContainer";
+import PuzzleGameContainer from "../components/PuzzleGameContainer";
 
 function PuzzlePage() {
-  const handleClickStart = () => {
-    alert("start");
-  };
+  const start = usePuzzleStore((state) => state.start);
 
   return (
     <div className="relative h-screen">
@@ -16,9 +15,7 @@ function PuzzlePage() {
       />
 
       <div className="flex flex-col items-center justify-center h-full gap-7">
-        <ImageUploader />
-        <LevelPicker />
-        <Button clickHandler={handleClickStart}>Start the Game</Button>
+        {start ? <PuzzleGameContainer /> : <PuzzleInputContainer />}
       </div>
     </div>
   );
