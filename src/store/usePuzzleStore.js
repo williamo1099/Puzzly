@@ -4,6 +4,7 @@ const usePuzzleStore = create((set) => ({
   uploadedImage: null,
   level: "easy",
   start: false,
+  pieces: [],
 
   setUploadedImage: (image) => {
     set({ uploadedImage: image });
@@ -13,6 +14,9 @@ const usePuzzleStore = create((set) => ({
   },
   setStart: (start) => {
     set({ start: start });
+  },
+  setPieces: (pieces) => {
+    set({ pieces: pieces });
   },
 }));
 

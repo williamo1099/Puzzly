@@ -21,13 +21,13 @@ function PuzzleInputContainer() {
   };
 
   return (
-    <React.Fragment>
+    <div className="flex flex-col items-center justify-center h-full gap-7">
       <ImageUploader />
       <LevelPicker />
       <Button disabled={!uploadedImage} clickHandler={handleClickStart}>
         Start the Game
       </Button>
-    </React.Fragment>
+    </div>
   );
 }
 
