@@ -3,6 +3,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 
 import usePuzzleStore from "../store/usePuzzleStore";
 import PuzzlePiece from "./PuzzlePiece";
+import PuzzleBoard from "./PuzzleBoard";
 
 function PuzzleGameContainer() {
   const pieces = usePuzzleStore((state) => state.pieces);
@@ -13,6 +14,8 @@ function PuzzleGameContainer() {
         {pieces.map((piece) => (
           <PuzzlePiece key={piece.id} piece={piece} />
         ))}
+
+        <PuzzleBoard />
       </div>
     </DndProvider>
   );

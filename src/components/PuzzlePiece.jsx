@@ -18,6 +18,8 @@ function PuzzlePiece({ piece }) {
     },
   }));
 
+  if (piece.isFilled) return null;
+
   return (
     <img
       ref={collected.isDragging ? dragPreview : drag}

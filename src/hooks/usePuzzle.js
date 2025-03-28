@@ -109,6 +109,7 @@ function usePuzzle() {
           currY: Math.random() * window.innerHeight,
           width: pieceWidth,
           height: pieceHeight,
+          isFilled: false,
         });
 
         canvas = null;

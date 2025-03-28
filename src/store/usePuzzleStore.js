@@ -28,6 +28,14 @@ const usePuzzleStore = create((set) => ({
       }),
     }));
   },
+
+  updatePieceFilledStatus: (pieceId) => {
+    set((state) => ({
+      pieces: state.pieces.map((piece) => {
+        return piece.id === pieceId ? { ...piece, isFilled: true } : piece;
+      }),
+    }));
+  },
 }));
 
 export default usePuzzleStore;
