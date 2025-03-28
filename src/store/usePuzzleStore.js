@@ -18,6 +18,16 @@ const usePuzzleStore = create((set) => ({
   setPieces: (pieces) => {
     set({ pieces: pieces });
   },
+
+  updatePiecePosition: (pieceId, newX, newY) => {
+    set((state) => ({
+      pieces: state.pieces.map((piece) => {
+        return piece.id === pieceId
+          ? { ...piece, currX: newX, currY: newY }
+          : piece;
+      }),
+    }));
+  },
 }));
 
 export default usePuzzleStore;

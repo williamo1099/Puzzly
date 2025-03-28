@@ -14,7 +14,6 @@ function usePuzzle() {
    * @returns [width, height]
    */
   const findImageRatio = (image) => {
-    console.log("ratio");
     const width = image.naturalWidth;
     const height = image.naturalHeight;
 
