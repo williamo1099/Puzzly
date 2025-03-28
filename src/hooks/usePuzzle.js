@@ -23,6 +23,40 @@ function usePuzzle() {
   };
 
   /**
+   * Scale down an image.
+   *
+   * @param {*} image
+   * @param {*} maxSize The maximum size of an image.
+   */
+  const scaleImage = (image, maxSize = 500) => {
+    const aspectRatio = image.naturalWidth / image.naturalHeight;
+
+    let newWidth, newHeight;
+    if (image.naturalWidth > image.naturalHeight) {
+      // For horizontal image.
+      newWidth = maxSize;
+      newHeight = maxSize / aspectRatio;
+    } else {
+      // For vertical image.
+      newHeight = maxSize;
+      newWidth = maxSize * aspectRatio;
+    }
+
+    // Draw the scaled down image.
+    const canvas = document.createElement("canvas");
+    canvas.width = newWidth;
+    canvas.height = newHeight;
+    const context = canvas.getContext("2d");
+    context.drawImage(image, 0, 0, newWidth, newHeight);
+    const scaledImage = new Image();
+    scaledImage.src = canvas.toDataURL();
+
+    return new Promise((resolve) => {
+      scaledImage.onload = () => resolve(scaledImage);
+    });
+  };
+
+  /**
    * Break an image into puzzle pieces.
    * Shout out to https://stackoverflow.com/a/8913024.
    *
@@ -90,9 +124,10 @@ function usePuzzle() {
     const image = new Image();
     image.src = uploadedImage;
 
-    image.onload = () => {
-      const ratio = findImageRatio(image);
-      const pieces = breakImageIntoPuzzlePieces(image, ratio);
+    image.onload = async () => {
+      const scaledImage = await scaleImage(image);
+      const ratio = findImageRatio(scaledImage);
+      const pieces = breakImageIntoPuzzlePieces(scaledImage, ratio);
 
       setPieces(pieces);
     };
