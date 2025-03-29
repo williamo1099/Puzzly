@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import gcd from "../utils/gcd";
 import usePuzzleStore from "../store/usePuzzleStore";
 
-function usePuzzle() {
+function usePuzzleInput() {
   const uploadedImage = usePuzzleStore((state) => state.uploadedImage);
   const level = usePuzzleStore((state) => state.level);
   const setPieces = usePuzzleStore((state) => state.setPieces);
@@ -144,4 +144,4 @@ function usePuzzle() {
   }, [uploadedImage, level, setPieces]);
 }
 
-export default usePuzzle;
+export default usePuzzleInput;
