@@ -8,6 +8,8 @@ import PuzzleBoard from "./PuzzleBoard";
 function PuzzleGameContainer() {
   const pieces = usePuzzleStore((state) => state.pieces);
 
+  if (pieces.length === 0) return;
+
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="w-full h-full">

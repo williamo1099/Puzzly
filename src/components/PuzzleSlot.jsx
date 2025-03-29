@@ -7,9 +7,10 @@ function PuzzleSlot({ piece }) {
     (state) => state.updatePieceFilledStatus
   );
 
+  // eslint-disable-next-line no-unused-vars
   const [collectedProps, drop] = useDrop(() => ({
     accept: "PUZZLE_PIECES",
-    drop: (item, monitor) => {
+    drop: (item) => {
       if (item.id === piece.id) {
         setIsFilled(true);
         updatePieceFilledStatus(piece.id);
@@ -24,13 +25,10 @@ function PuzzleSlot({ piece }) {
       ref={drop}
       src={piece.src}
       alt="puzzle slot"
-      className={`border ${isFilled ? "" : "opacity-5"}`}
+      className={`border ${isFilled ? "" : "opacity-5"} w-full h-full`}
       style={{
-        position: "absolute",
-        left: piece.correctX,
-        top: piece.correctY,
-        width: piece.width,
-        height: piece.height,
+        gridColumn: piece.correctX + 1,
+        gridRow: piece.correctY + 1,
       }}
     />
   );

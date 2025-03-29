@@ -103,8 +103,8 @@ function usePuzzle() {
         pieces.push({
           id: `${row}-${col}`,
           src: canvas.toDataURL(),
-          correctX: col * pieceWidth,
-          correctY: row * pieceHeight,
+          correctX: col,
+          correctY: row,
           currX: Math.random() * window.innerWidth, // Scatter randomly
           currY: Math.random() * window.innerHeight,
           width: pieceWidth,

@@ -26,7 +26,7 @@ function PuzzlePiece({ piece }) {
       {...collected}
       src={piece.src}
       alt="puzzle piece"
-      className="border"
+      className="border z-50"
       style={{
         position: "absolute",
         left: piece.currX,

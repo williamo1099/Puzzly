@@ -6,10 +6,12 @@ function PuzzleBoard() {
   const pieces = usePuzzleStore((state) => state.pieces);
 
   return (
-    <div className="border-2">
-      {pieces.map((piece) => (
-        <PuzzleSlot key={piece.id} piece={piece} />
-      ))}
+    <div className="w-full h-screen flex items-center justify-center">
+      <div className="w-fit h-fit grid">
+        {pieces.map((piece) => (
+          <PuzzleSlot key={piece.id} piece={piece} />
+        ))}
+      </div>
     </div>
   );
 }
