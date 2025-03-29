@@ -19,6 +19,15 @@ const usePuzzleStore = create((set) => ({
     set({ pieces: pieces });
   },
 
+  reset: () => {
+    set({
+      uploadedImage: null,
+      level: "easy",
+      start: false,
+      pieces: [],
+    });
+  },
+
   updatePiecePosition: (pieceId, newX, newY) => {
     set((state) => ({
       pieces: state.pieces.map((piece) => {
