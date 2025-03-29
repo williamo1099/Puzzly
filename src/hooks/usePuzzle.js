@@ -5,6 +5,7 @@ import usePuzzleStore from "../store/usePuzzleStore";
 
 function usePuzzle() {
   const uploadedImage = usePuzzleStore((state) => state.uploadedImage);
+  const level = usePuzzleStore((state) => state.level);
   const setPieces = usePuzzleStore((state) => state.setPieces);
 
   /**
@@ -128,11 +129,19 @@ function usePuzzle() {
     image.onload = async () => {
       const scaledImage = await scaleImage(image);
       const ratio = findImageRatio(scaledImage);
-      const pieces = breakImageIntoPuzzlePieces(scaledImage, ratio);
+
+      let n = 50;
+      if (level === "Medium") {
+        n = 100;
+      } else if (level === "Hard") {
+        n = 200;
+      }
+
+      const pieces = breakImageIntoPuzzlePieces(scaledImage, ratio, n);
 
       setPieces(pieces);
     };
-  }, [uploadedImage]);
+  }, [uploadedImage, level, setPieces]);
 }
 
 export default usePuzzle;
