@@ -106,8 +106,8 @@ function usePuzzleInput() {
           src: canvas.toDataURL(),
           correctX: col,
           correctY: row,
-          currX: Math.random() * window.innerWidth, // Scatter randomly
-          currY: Math.random() * window.innerHeight,
+          currX: Math.random() * (window.innerWidth - pieceWidth), // Scatter randomly
+          currY: Math.random() * (window.innerHeight - pieceHeight),
           width: pieceWidth,
           height: pieceHeight,
           isFilled: false,

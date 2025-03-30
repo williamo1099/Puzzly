@@ -21,6 +21,15 @@ function PuzzleGameContainer() {
       const offset = monitor.getSourceClientOffset();
       if (!offset) return;
 
+      if (
+        offset.x < 0 ||
+        offset.y < 0 ||
+        offset.x > window.innerWidth - item.pieceWidth ||
+        offset.y > window.innerHeight - item.pieceHeight
+      ) {
+        return;
+      }
+
       updatePiecePosition(item.id, offset.x, offset.y);
       return undefined;
     },

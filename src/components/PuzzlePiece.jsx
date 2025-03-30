@@ -3,7 +3,7 @@ import { useDrag } from "react-dnd";
 function PuzzlePiece({ piece }) {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "PUZZLE_PIECES",
-    item: { id: piece.id, left: piece.currX, top: piece.currY },
+    item: piece,
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
