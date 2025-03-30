@@ -1,32 +1,26 @@
 import { useDrag } from "react-dnd";
 
-import usePuzzleStore from "../store/usePuzzleStore";
-
 function PuzzlePiece({ piece }) {
-  const updatePiecePosition = usePuzzleStore(
-    (state) => state.updatePiecePosition
-  );
-
-  const [collected, drag, dragPreview] = useDrag(() => ({
+  const [{ isDragging }, drag] = useDrag(() => ({
     type: "PUZZLE_PIECES",
-    item: { id: piece.id },
-    end: (item, monitor) => {
-      const offset = monitor.getSourceClientOffset();
-      if (!offset) return;
-
-      updatePiecePosition(piece.id, offset.x, offset.y);
-    },
+    item: { id: piece.id, left: piece.currX, top: piece.currY },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
   }));
+
+  if (isDragging) {
+    return <div className="absolute" ref={drag} />;
+  }
 
   if (piece.isFilled) return null;
 
   return (
     <img
-      ref={collected.isDragging ? dragPreview : drag}
-      {...collected}
+      ref={drag}
       src={piece.src}
       alt="puzzle piece"
-      className="border z-50"
+      className="border cursor-move z-50"
       style={{
         position: "absolute",
         left: piece.currX,
