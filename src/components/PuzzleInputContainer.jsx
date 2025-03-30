@@ -1,5 +1,7 @@
 import React from "react";
 
+import { InformationCircleIcon } from "@heroicons/react/24/solid";
+
 import ImageUploader from "./ImageUploader";
 import LevelPicker from "./LevelPicker";
 import Button from "./Button";
@@ -24,7 +26,12 @@ function PuzzleInputContainer() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-full gap-7">
+    <div className="relative flex flex-col items-center justify-center h-full w-full gap-7">
+      {/* Info Button */}
+      <a href="/about" className="absolute top-5 right-5">
+        <InformationCircleIcon className="w-10 h-10 text-primary" />
+      </a>
+
       {/* Image uploader */}
       <ImageUploader />
 
