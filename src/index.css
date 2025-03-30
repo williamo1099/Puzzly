@@ -14,3 +14,23 @@
   --color-primary: rgb(146, 176, 179);
   --color-accent: rgb(203, 59, 53);
 }
+
+.alert-title {
+  @apply text-black font-bold font-roboto;
+}
+
+.alert-text {
+  @apply text-gray-500 font-semibold font-roboto;
+}
+
+.alert-actions-container {
+  @apply flex gap-4;
+}
+
+.alert-confirm-button {
+  @apply text-black bg-primary text-lg font-bold font-roboto p-3 rounded hover:opacity-80;
+}
+
+.alert-cancel-button {
+  @apply text-white bg-red-500 text-lg font-bold font-roboto p-3 rounded hover:opacity-80;
+}

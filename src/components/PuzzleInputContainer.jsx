@@ -1,6 +1,7 @@
 import React from "react";
 
 import { InformationCircleIcon } from "@heroicons/react/24/solid";
+import { PuzzlePieceIcon } from "@heroicons/react/24/solid";
 
 import ImageUploader from "./ImageUploader";
 import LevelPicker from "./LevelPicker";
@@ -39,7 +40,11 @@ function PuzzleInputContainer() {
       <LevelPicker />
 
       {/* Start button */}
-      <Button disabled={!uploadedImage} clickHandler={handleClickStart}>
+      <Button
+        disabled={!uploadedImage}
+        clickHandler={handleClickStart}
+        icon={PuzzlePieceIcon}
+      >
         Start the Game
       </Button>
     </div>

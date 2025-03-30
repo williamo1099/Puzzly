@@ -1,10 +1,15 @@
-import usePuzzleStore from "../store/usePuzzleStore";
+import { useDrop } from "react-dnd";
+
+import { ArrowPathIcon } from "@heroicons/react/24/solid";
+
 import PuzzlePiece from "./PuzzlePiece";
 import PuzzleBoard from "./PuzzleBoard";
 import Button from "./Button";
 
+import usePuzzleStore from "../store/usePuzzleStore";
 import usePuzzleGame from "../hooks/usePuzzleGame";
-import { useDrop } from "react-dnd";
+
+import showConfirmationAlert from "../utils/show-confirmation-alert";
 
 function PuzzleGameContainer() {
   const pieces = usePuzzleStore((state) => state.pieces);
@@ -36,7 +41,13 @@ function PuzzleGameContainer() {
   }));
 
   const handleClickReset = () => {
-    reset();
+    showConfirmationAlert(
+      "Are you sure you want to reset?",
+      "Your progress will be lost. Do you want to continue?",
+      "Yes!",
+      "Cancel",
+      reset
+    );
   };
 
   if (pieces.length === 0) return;
@@ -66,7 +77,13 @@ function PuzzleGameContainer() {
       <PuzzleBoard />
 
       {/* Reset button */}
-      <Button clickHandler={handleClickReset}>Reset</Button>
+      <Button
+        clickHandler={handleClickReset}
+        classNames="z-20"
+        icon={ArrowPathIcon}
+      >
+        Reset
+      </Button>
     </div>
   );
 }
