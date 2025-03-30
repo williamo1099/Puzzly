@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { useDrop } from "react-dnd";
+
+import playWrongSound from "../utils/play-wrong-sound-effect";
+import playCorrectSound from "../utils/play-correct-sound-effect";
+
 import usePuzzleStore from "../store/usePuzzleStore";
 
 function PuzzleSlot({ piece }) {
@@ -7,25 +11,46 @@ function PuzzleSlot({ piece }) {
     (state) => state.updatePieceFilledStatus
   );
 
-  // eslint-disable-next-line no-unused-vars
-  const [collectedProps, drop] = useDrop(() => ({
+  const [isFilled, setIsFilled] = useState(false);
+  const [isWrong, setIsWrong] = useState(false);
+
+  const [{ isOver }, drop] = useDrop(() => ({
     accept: "PUZZLE_PIECES",
     drop: (item) => {
       if (item.id === piece.id) {
+        playCorrectSound();
         setIsFilled(true);
         updatePieceFilledStatus(piece.id);
+      } else {
+        playWrongSound();
+        setIsWrong(true);
+        setTimeout(() => setIsWrong(false), 500);
       }
     },
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+    }),
   }));
-
-  const [isFilled, setIsFilled] = useState(false);
 
   return (
     <img
       ref={drop}
       src={piece.src}
-      alt="puzzle slot"
-      className={`border ${isFilled ? "" : "opacity-5"} w-full h-full`}
+      alt={`Puzzle slot for piece ${piece.id}`}
+      className={`
+        w-full h-full border-2 transition-all duration-300 ease-in-out
+        ${
+          isFilled
+            ? "opacity-100 scale-105 border-green-500"
+            : "opacity-10 scale-95"
+        }
+        ${isWrong ? "animate-shake" : ""}
+        ${
+          isOver && !isFilled
+            ? "animate-border-pulse ring-4 ring-accent shadow-lg"
+            : ""
+        }
+      `}
       style={{
         gridColumn: piece.correctX + 1,
         gridRow: piece.correctY + 1,

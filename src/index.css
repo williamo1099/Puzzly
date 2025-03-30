@@ -13,6 +13,24 @@
 
   --color-primary: rgb(146, 176, 179);
   --color-accent: rgb(203, 59, 53);
+
+  --animate-shake: shake 200ms ease-in-out;
+
+  @keyframes shake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-10px);
+    }
+    50% {
+      transform: translateX(10px);
+    }
+    75% {
+      transform: translateX(-10px);
+    }
+  }
 }
 
 .alert-title {
@@ -28,9 +46,9 @@
 }
 
 .alert-confirm-button {
-  @apply text-black bg-primary text-lg font-bold font-roboto p-3 rounded hover:opacity-80;
+  @apply text-black bg-primary text-lg font-bold font-roboto p-3 rounded cursor-pointer hover:opacity-80;
 }
 
 .alert-cancel-button {
-  @apply text-white bg-red-500 text-lg font-bold font-roboto p-3 rounded hover:opacity-80;
+  @apply text-white bg-red-500 text-lg font-bold font-roboto p-3 rounded cursor-pointer hover:opacity-80;
 }
