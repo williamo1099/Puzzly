@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 import usePuzzleStore from "../store/usePuzzleStore";
+
+import playMoveSound from "../utils/play-move-sound-effect";
+
 import { LEVELS } from "../constants/levels";
 import { LEVEL_MESSAGES } from "../constants/levelMessages";
 
@@ -12,8 +15,13 @@ function LevelPicker() {
   const [levelMessage, setLevelMessage] = useState(LEVEL_MESSAGES[LEVELS[0]]);
 
   const handleLevelChange = (level) => {
+    if (level === selectedLevel) {
+      return;
+    }
+
     setLevel(level);
     setSelectedLevel(level);
+    playMoveSound();
 
     setLevelMessage(LEVEL_MESSAGES[level]);
   };
@@ -36,22 +44,28 @@ function LevelPicker() {
         />
 
         {LEVELS.map((level) => (
-          <div
+          <span
             key={level}
             onClick={() => handleLevelChange(level)}
             className="cursor-pointer text-center font-bold w-24 py-2 rounded-full z-10 transition-all duration-300"
           >
             {level}
-          </div>
+          </span>
         ))}
       </div>
 
       {/* Level Description Message */}
       <motion.span
         className="text-gray-500"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        initial={{
+          opacity: 0.5,
+          x: 50,
+        }}
+        animate={{
+          opacity: 1,
+          x: 0,
+        }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
       >
         {levelMessage}
       </motion.span>
