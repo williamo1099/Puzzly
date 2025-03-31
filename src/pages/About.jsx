@@ -1,3 +1,6 @@
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
+
 import { PuzzlePieceIcon } from "@heroicons/react/24/solid";
 
 import playSound from "../utils/play-sound";
@@ -18,7 +21,18 @@ function AboutPage() {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center w-full h-full gap-2">
+    <motion.div
+      initial={{
+        left: -10,
+        opacity: 0,
+      }}
+      animate={{
+        left: 0,
+        opacity: 1,
+      }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="relative flex flex-col items-center justify-center w-full h-full gap-2"
+    >
       {/* Info Button */}
       <InfoButton
         classNames="top-5 right-5"
@@ -54,7 +68,7 @@ function AboutPage() {
         </a>{" "}
         in Bandung
       </p>
-    </div>
+    </motion.div>
   );
 }
 
