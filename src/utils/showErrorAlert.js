@@ -1,6 +1,8 @@
 import Swal from "sweetalert2";
 
+import playSound from "./playSound";
 import withClickSound from "./withClickSound";
+import { SOUND_FILENAMES } from "../constants/soundFilenames";
 
 /**
  * Show error alert using SweetAlert2.
@@ -10,6 +12,8 @@ import withClickSound from "./withClickSound";
  * @param {*} confirmButtonText
  */
 function showErrorAlert(title, text, confirmButtonText) {
+  playSound(SOUND_FILENAMES.ERROR);
+
   Swal.fire({
     title,
     text,

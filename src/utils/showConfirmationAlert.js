@@ -1,6 +1,9 @@
 import Swal from "sweetalert2";
 
+import playSound from "./playSound";
 import withClickSound from "./withClickSound";
+
+import { SOUND_FILENAMES } from "../constants/soundFilenames";
 
 /**
  * Show confirmation alert using SweetAlert2.
@@ -20,6 +23,8 @@ function showConfirmationAlert(
   onConfirm = () => {},
   onCancel = () => {}
 ) {
+  playSound(SOUND_FILENAMES.WARNING);
+
   Swal.fire({
     title,
     text,
