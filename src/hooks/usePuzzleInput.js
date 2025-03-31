@@ -6,6 +6,7 @@ import playSound from "../utils/play-sound";
 import processImage from "../utils/process-image";
 
 import { SOUND_FILENAMES } from "../constants/soundFilenames";
+import showErrorAlert from "../utils/show-error-alert";
 
 function usePuzzleInput() {
   const uploadedImage = usePuzzleStore((state) => state.uploadedImage);
@@ -19,7 +20,11 @@ function usePuzzleInput() {
   const handleButtonStartClick = () => {
     // Check if image has been uploaded successfully.
     if (!uploadedImage) {
-      alert("Please provide the image to start the game!");
+      showErrorAlert(
+        "Oops...",
+        "Please provide an image to start the game!",
+        "OK"
+      );
       return;
     }
 
