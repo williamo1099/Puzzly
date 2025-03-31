@@ -11,7 +11,7 @@ function LevelPicker({ levelChangeHandler }) {
 
   const handleLevelChange = (level) => {
     if (level === selectedLevel) return;
-    levelChangeHandler();
+    levelChangeHandler(level);
     setSelectedLevel(level);
     setLevelMessage(LEVEL_MESSAGES[level]);
   };
