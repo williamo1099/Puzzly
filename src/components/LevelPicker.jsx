@@ -1,30 +1,18 @@
 import React, { useState } from "react";
-
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 
-import usePuzzleStore from "../store/usePuzzleStore";
-
-import playSound from "../utils/playSound";
-
-import { SOUND_FILENAMES } from "../constants/soundFilenames";
 import { LEVELS } from "../constants/levels";
 import { LEVEL_MESSAGES } from "../constants/levelMessages";
 
-function LevelPicker() {
-  const setLevel = usePuzzleStore((state) => state.setLevel);
+function LevelPicker({ levelChangeHandler }) {
   const [selectedLevel, setSelectedLevel] = useState("Easy");
   const [levelMessage, setLevelMessage] = useState(LEVEL_MESSAGES[LEVELS[0]]);
 
   const handleLevelChange = (level) => {
-    if (level === selectedLevel) {
-      return;
-    }
-
-    setLevel(level);
+    if (level === selectedLevel) return;
+    levelChangeHandler();
     setSelectedLevel(level);
-    playSound(SOUND_FILENAMES.MOVE);
-
     setLevelMessage(LEVEL_MESSAGES[level]);
   };
 

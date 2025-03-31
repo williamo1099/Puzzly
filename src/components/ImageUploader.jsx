@@ -1,38 +1,25 @@
 import React, { useState } from "react";
-
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 
 import usePuzzleStore from "../store/usePuzzleStore";
 
-import playSound from "../utils/playSound";
 import withClickSound from "../utils/withClickSound";
 
 import { IMAGE_MESSAGES } from "../constants/imageMessages";
-import { SOUND_FILENAMES } from "../constants/soundFilenames";
 
-function ImageUploader() {
+function ImageUploader({ fileChangeHandler }) {
   const uploadedImage = usePuzzleStore((state) => state.uploadedImage);
-  const setUploadedImage = usePuzzleStore((state) => state.setUploadedImage);
 
   const [imageMessage, setImageMessage] = useState("");
 
-  const getRandomMessage = () => {
-    return IMAGE_MESSAGES[Math.floor(Math.random() * IMAGE_MESSAGES.length)];
-  };
+  const handleUploadFileChange = (event) => {
+    fileChangeHandler(event);
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-
-    if (file) {
-      const imageURL = URL.createObjectURL(file);
-      setUploadedImage(imageURL);
-
-      // Play success sound.
-      playSound(SOUND_FILENAMES.SUCCESS);
-
-      setImageMessage(getRandomMessage());
-    }
+    // Set random message.
+    setImageMessage(
+      IMAGE_MESSAGES[Math.floor(Math.random() * IMAGE_MESSAGES.length)]
+    );
   };
 
   return (
@@ -75,7 +62,7 @@ function ImageUploader() {
             accept="image/*"
             className="hidden"
             onClick={withClickSound()}
-            onChange={handleFileChange}
+            onChange={handleUploadFileChange}
           />
         </label>
       </motion.div>

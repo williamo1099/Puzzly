@@ -10,7 +10,12 @@ import Button from "./Button";
 import InfoButton from "./InfoButton";
 
 function PuzzleInputContainer() {
-  const { handleButtonStartClick, handleButtonInfoClick } = usePuzzleInput();
+  const {
+    handleButtonStartClick,
+    handleButtonInfoClick,
+    handleUploadFileChange,
+    handleLevelChange,
+  } = usePuzzleInput();
 
   return (
     <div className="relative flex flex-col items-center justify-center h-full w-full gap-7">
@@ -22,10 +27,10 @@ function PuzzleInputContainer() {
       />
 
       {/* Image uploader */}
-      <ImageUploader />
+      <ImageUploader fileChangeHandler={handleUploadFileChange} />
 
       {/* Level picker */}
-      <LevelPicker />
+      <LevelPicker levelChangeHandler={handleLevelChange} />
 
       {/* Start button */}
       <Button clickHandler={handleButtonStartClick} icon={PuzzlePieceIcon}>
