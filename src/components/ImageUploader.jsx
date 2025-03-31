@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // eslint-disable-next-line no-unused-vars
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { CheckCircleIcon } from "@heroicons/react/16/solid";
 
 import usePuzzleStore from "../store/usePuzzleStore";
 
@@ -11,10 +12,20 @@ import { IMAGE_MESSAGES } from "../constants/imageMessages";
 function ImageUploader({ fileChangeHandler }) {
   const uploadedImage = usePuzzleStore((state) => state.uploadedImage);
 
+  const [showCheckmark, setShowCheckmark] = useState(false);
   const [imageMessage, setImageMessage] = useState("");
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowCheckmark(true);
+    }, 1000);
+  }, [uploadedImage]);
 
   const handleUploadFileChange = (event) => {
     fileChangeHandler(event);
+
+    // Reset checkmark show state.
+    setShowCheckmark(false);
 
     // Set random message.
     setImageMessage(
@@ -44,11 +55,29 @@ function ImageUploader({ fileChangeHandler }) {
           } border-2 border-gray-400 rounded-lg flex items-center justify-center overflow-hidden cursor-pointer`}
         >
           {uploadedImage ? (
-            <img
-              src={uploadedImage}
-              alt="Uploaded"
-              className="object-cover w-full h-full"
-            />
+            <>
+              <img
+                src={uploadedImage}
+                alt="Uploaded"
+                className={`object-cover w-full h-full ${
+                  !showCheckmark && "opacity-80"
+                }`}
+              />
+
+              <AnimatePresence>
+                {!showCheckmark && (
+                  <motion.div
+                    className="absolute rounded-full p-1"
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                  >
+                    <CheckCircleIcon className="w-28 h-28 text-green-500" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </>
           ) : (
             <div className="flex flex-col items-center justify-center text-gray-500">
               Click to Upload Your Image
