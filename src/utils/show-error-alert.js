@@ -1,5 +1,12 @@
 import Swal from "sweetalert2";
 
+/**
+ * Show error alert using SweetAlert2.
+ *
+ * @param {*} title
+ * @param {*} text
+ * @param {*} confirmButtonText
+ */
 function showErrorAlert(title, text, confirmButtonText) {
   Swal.fire({
     title,

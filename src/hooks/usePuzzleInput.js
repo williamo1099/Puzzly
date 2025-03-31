@@ -4,9 +4,9 @@ import usePuzzleStore from "../store/usePuzzleStore";
 
 import playSound from "../utils/play-sound";
 import processImage from "../utils/process-image";
+import showErrorAlert from "../utils/show-error-alert";
 
 import { SOUND_FILENAMES } from "../constants/soundFilenames";
-import showErrorAlert from "../utils/show-error-alert";
 
 function usePuzzleInput() {
   const uploadedImage = usePuzzleStore((state) => state.uploadedImage);

@@ -1,5 +1,15 @@
 import Swal from "sweetalert2";
 
+/**
+ * Show confirmation alert using SweetAlert2.
+ *
+ * @param {*} title
+ * @param {*} text
+ * @param {*} confirmButtonText
+ * @param {*} cancelButtonText
+ * @param {*} onConfirm
+ * @param {*} onCancel
+ */
 function showConfirmationAlert(
   title,
   text,

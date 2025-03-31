@@ -1,3 +1,8 @@
+/**
+ * Play a sound from a filename.
+ *
+ * @param {*} src The audio filenames
+ */
 function playSound(src) {
   if (!src) {
     return;

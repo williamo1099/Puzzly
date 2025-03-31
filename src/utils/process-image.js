@@ -4,7 +4,7 @@ import gcd from "../utils/gcd";
  * Find an aspect ratio of an image.
  *
  * @param {*} image
- * @returns [width, height]
+ * @returns The image ratio [width, height]
  */
 function findImageRatio(image) {
   const width = image.naturalWidth;
@@ -19,7 +19,8 @@ function findImageRatio(image) {
  * Scale down an image.
  *
  * @param {*} image
- * @param {*} maxSize The maximum size of an image.
+ * @param {*} maxSize The maximum size of an image
+ * @returns Scaled down image
  */
 function scaleImage(image, maxSize = 500) {
   const aspectRatio = image.naturalWidth / image.naturalHeight;
@@ -54,8 +55,8 @@ function scaleImage(image, maxSize = 500) {
  * Shout out to Matt Greer (https://stackoverflow.com/a/8913024)!
  *
  * @param {*} image
- * @param {int} n The constant difficulty number.
- * @returns
+ * @param {int} n The constant difficulty number
+ * @returns The pieces
  */
 function breakImageIntoPuzzlePieces(image, imageRatio, n = 50) {
   if (!imageRatio[0] || !imageRatio[1]) return;
@@ -113,9 +114,9 @@ function breakImageIntoPuzzlePieces(image, imageRatio, n = 50) {
 /**
  * Process the input image into puzzle pieces.
  *
- * @param {*} imageSrc
- * @param {*} n
- * @returns
+ * @param {*} imageSrc The image source
+ * @param {*} n The constant difficulty number
+ * @returns The pieces
  */
 function processImage(imageSrc, n) {
   return new Promise((resolve, reject) => {
