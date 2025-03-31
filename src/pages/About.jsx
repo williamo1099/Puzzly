@@ -1,12 +1,30 @@
 import { PuzzlePieceIcon } from "@heroicons/react/24/solid";
 
+import playSound from "../utils/play-sound";
+
+import { SOUND_FILENAMES } from "../constants/soundFilenames";
+
+import InfoButton from "../components/InfoButton";
+
 function AboutPage() {
+  const handleButtonInfoClick = () => {
+    // Play the click sound effect.
+    playSound(SOUND_FILENAMES.CLICK);
+
+    // Go to main page after 100ms.
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 100);
+  };
+
   return (
     <div className="relative flex flex-col items-center justify-center w-full h-full gap-2">
       {/* Info Button */}
-      <a href="/" className="absolute top-5 right-5">
-        <PuzzlePieceIcon className="w-10 h-10 text-primary" />
-      </a>
+      <InfoButton
+        classNames="top-5 right-5"
+        clickHandler={handleButtonInfoClick}
+        icon={PuzzlePieceIcon}
+      />
 
       {/* Title */}
       <h2 className="text-3xl font-bold">

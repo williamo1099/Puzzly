@@ -2,36 +2,24 @@ import React from "react";
 import { InformationCircleIcon } from "@heroicons/react/24/solid";
 import { PuzzlePieceIcon } from "@heroicons/react/24/solid";
 
-import usePuzzleStore from "../store/usePuzzleStore";
-
 import usePuzzleInput from "../hooks/usePuzzleInput";
 
 import ImageUploader from "./ImageUploader";
 import LevelPicker from "./LevelPicker";
 import Button from "./Button";
+import InfoButton from "./InfoButton";
 
 function PuzzleInputContainer() {
-  const uploadedImage = usePuzzleStore((state) => state.uploadedImage);
-  const setStart = usePuzzleStore((state) => state.setStart);
-
-  usePuzzleInput();
-
-  const handleClickStart = () => {
-    if (!uploadedImage) {
-      alert("Please provide the image to start the game!");
-      return;
-    }
-
-    // Set start state to true.
-    setStart(true);
-  };
+  const { handleButtonStartClick, handleButtonInfoClick } = usePuzzleInput();
 
   return (
     <div className="relative flex flex-col items-center justify-center h-full w-full gap-7">
       {/* Info Button */}
-      <a href="/about" className="absolute top-5 right-5">
-        <InformationCircleIcon className="w-10 h-10 text-primary" />
-      </a>
+      <InfoButton
+        classNames="top-5 right-5"
+        clickHandler={handleButtonInfoClick}
+        icon={InformationCircleIcon}
+      />
 
       {/* Image uploader */}
       <ImageUploader />
@@ -40,11 +28,7 @@ function PuzzleInputContainer() {
       <LevelPicker />
 
       {/* Start button */}
-      <Button
-        disabled={!uploadedImage}
-        clickHandler={handleClickStart}
-        icon={PuzzlePieceIcon}
-      >
+      <Button clickHandler={handleButtonStartClick} icon={PuzzlePieceIcon}>
         Start the Game
       </Button>
     </div>
