@@ -2,11 +2,10 @@ import { useEffect } from "react";
 
 import usePuzzleStore from "../store/usePuzzleStore";
 
-import playSound from "../utils/playSound";
 import processImage from "../utils/processImage";
 import showErrorAlert from "../utils/showErrorAlert";
 
-import { SOUND_FILENAMES } from "../constants/soundFilenames";
+import withClickSound from "../utils/withClickSound";
 
 function usePuzzleInput() {
   const uploadedImage = usePuzzleStore((state) => state.uploadedImage);
@@ -17,7 +16,7 @@ function usePuzzleInput() {
   /**
    * Handle click event for button start.
    */
-  const handleButtonStartClick = () => {
+  const handleButtonStartClick = withClickSound(() => {
     // Check if image has been uploaded successfully.
     if (!uploadedImage) {
       showErrorAlert(
@@ -30,20 +29,17 @@ function usePuzzleInput() {
 
     // Set start state to true.
     setStart(true);
-  };
+  });
 
   /**
    * Handle click event for button info.
    */
-  const handleButtonInfoClick = () => {
-    // Play the click sound effect.
-    playSound(SOUND_FILENAMES.CLICK);
-
+  const handleButtonInfoClick = withClickSound(() => {
     // Go to about page after 100ms.
     setTimeout(() => {
       window.location.href = "/about";
     }, 100);
-  };
+  });
 
   useEffect(() => {
     if (!uploadedImage) return;

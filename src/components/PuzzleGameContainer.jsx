@@ -5,20 +5,17 @@ import usePuzzleStore from "../store/usePuzzleStore";
 
 import usePuzzleGame from "../hooks/usePuzzleGame";
 
-import showConfirmationAlert from "../utils/showConfirmationAlert";
-
 import PuzzlePiece from "./PuzzlePiece";
 import PuzzleBoard from "./PuzzleBoard";
 import Button from "./Button";
 
 function PuzzleGameContainer() {
   const pieces = usePuzzleStore((state) => state.pieces);
-  const reset = usePuzzleStore((state) => state.reset);
   const updatePiecePosition = usePuzzleStore(
     (state) => state.updatePiecePosition
   );
 
-  const progress = usePuzzleGame();
+  const { handleResetButtonClick, progress } = usePuzzleGame();
 
   const [, drop] = useDrop(() => ({
     accept: "PUZZLE_PIECES",
@@ -39,16 +36,6 @@ function PuzzleGameContainer() {
       return undefined;
     },
   }));
-
-  const handleClickReset = () => {
-    showConfirmationAlert(
-      "Are you sure you want to reset?",
-      "Your progress will be lost. Do you want to continue?",
-      "Yes!",
-      "Cancel",
-      reset
-    );
-  };
 
   if (pieces.length === 0) return;
 
@@ -78,7 +65,7 @@ function PuzzleGameContainer() {
 
       {/* Reset button */}
       <Button
-        clickHandler={handleClickReset}
+        clickHandler={handleResetButtonClick}
         classNames="z-20"
         icon={ArrowPathIcon}
       >

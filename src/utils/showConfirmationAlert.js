@@ -1,5 +1,7 @@
 import Swal from "sweetalert2";
 
+import withClickSound from "./withClickSound";
+
 /**
  * Show confirmation alert using SweetAlert2.
  *
@@ -35,9 +37,9 @@ function showConfirmationAlert(
     buttonsStyling: false,
   }).then((result) => {
     if (result.isConfirmed) {
-      onConfirm();
+      withClickSound(onConfirm)();
     } else {
-      onCancel();
+      withClickSound(onCancel)();
     }
   });
 }

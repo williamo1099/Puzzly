@@ -3,22 +3,17 @@ import { motion } from "framer-motion";
 
 import { PuzzlePieceIcon } from "@heroicons/react/24/solid";
 
-import playSound from "../utils/playSound";
-
-import { SOUND_FILENAMES } from "../constants/soundFilenames";
+import withClickSound from "../utils/withClickSound";
 
 import InfoButton from "../components/InfoButton";
 
 function AboutPage() {
-  const handleButtonInfoClick = () => {
-    // Play the click sound effect.
-    playSound(SOUND_FILENAMES.CLICK);
-
+  const handleButtonInfoClick = withClickSound(() => {
     // Go to main page after 100ms.
     setTimeout(() => {
       window.location.href = "/";
     }, 100);
-  };
+  });
 
   return (
     <motion.div

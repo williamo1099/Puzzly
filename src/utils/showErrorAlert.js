@@ -1,5 +1,7 @@
 import Swal from "sweetalert2";
 
+import withClickSound from "./withClickSound";
+
 /**
  * Show error alert using SweetAlert2.
  *
@@ -21,6 +23,8 @@ function showErrorAlert(title, text, confirmButtonText) {
       confirmButton: "alert-confirm-button",
     },
     buttonsStyling: false,
+  }).then(() => {
+    withClickSound(() => {})();
   });
 }
 

@@ -5,10 +5,9 @@ import { motion } from "framer-motion";
 
 import usePuzzleStore from "../store/usePuzzleStore";
 
-import playSound from "../utils/playSound";
+import withClickSound from "../utils/withClickSound";
 
 import { IMAGE_MESSAGES } from "../constants/imageMessages";
-import { SOUND_FILENAMES } from "../constants/soundFilenames";
 
 function ImageUploader() {
   const uploadedImage = usePuzzleStore((state) => state.uploadedImage);
@@ -70,9 +69,7 @@ function ImageUploader() {
             type="file"
             accept="image/*"
             className="hidden"
-            onClick={() => {
-              playSound(SOUND_FILENAMES.CLICK);
-            }}
+            onClick={withClickSound()}
             onChange={handleFileChange}
           />
         </label>
