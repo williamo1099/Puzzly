@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 
 import usePuzzleStore from "../store/usePuzzleStore";
 
-import playMoveSound from "../utils/play-move-sound-effect";
+import playSound from "../utils/play-sound";
 
+import { SOUND_FILENAMES } from "../constants/soundFilenames";
 import { LEVELS } from "../constants/levels";
 import { LEVEL_MESSAGES } from "../constants/levelMessages";
 
@@ -21,7 +23,7 @@ function LevelPicker() {
 
     setLevel(level);
     setSelectedLevel(level);
-    playMoveSound();
+    playSound(SOUND_FILENAMES.MOVE);
 
     setLevelMessage(LEVEL_MESSAGES[level]);
   };

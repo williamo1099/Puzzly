@@ -1,15 +1,15 @@
 import { useDrop } from "react-dnd";
-
 import { ArrowPathIcon } from "@heroicons/react/24/solid";
+
+import usePuzzleStore from "../store/usePuzzleStore";
+
+import usePuzzleGame from "../hooks/usePuzzleGame";
+
+import showConfirmationAlert from "../utils/show-confirmation-alert";
 
 import PuzzlePiece from "./PuzzlePiece";
 import PuzzleBoard from "./PuzzleBoard";
 import Button from "./Button";
-
-import usePuzzleStore from "../store/usePuzzleStore";
-import usePuzzleGame from "../hooks/usePuzzleGame";
-
-import showConfirmationAlert from "../utils/show-confirmation-alert";
 
 function PuzzleGameContainer() {
   const pieces = usePuzzleStore((state) => state.pieces);

@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 
-import gcd from "../utils/gcd";
 import usePuzzleStore from "../store/usePuzzleStore";
+
+import gcd from "../utils/gcd";
 
 function usePuzzleInput() {
   const uploadedImage = usePuzzleStore((state) => state.uploadedImage);

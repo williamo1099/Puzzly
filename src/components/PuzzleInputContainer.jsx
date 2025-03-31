@@ -1,14 +1,14 @@
 import React from "react";
-
 import { InformationCircleIcon } from "@heroicons/react/24/solid";
 import { PuzzlePieceIcon } from "@heroicons/react/24/solid";
+
+import usePuzzleStore from "../store/usePuzzleStore";
+
+import usePuzzleInput from "../hooks/usePuzzleInput";
 
 import ImageUploader from "./ImageUploader";
 import LevelPicker from "./LevelPicker";
 import Button from "./Button";
-
-import usePuzzleInput from "../hooks/usePuzzleInput";
-import usePuzzleStore from "../store/usePuzzleStore";
 
 function PuzzleInputContainer() {
   const uploadedImage = usePuzzleStore((state) => state.uploadedImage);

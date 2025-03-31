@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useDrop } from "react-dnd";
 
-import playWrongSound from "../utils/play-wrong-sound-effect";
-import playCorrectSound from "../utils/play-correct-sound-effect";
-
 import usePuzzleStore from "../store/usePuzzleStore";
+
+import playSound from "../utils/play-sound";
+
+import { SOUND_FILENAMES } from "../constants/soundFilenames";
 
 function PuzzleSlot({ piece }) {
   const updatePieceFilledStatus = usePuzzleStore(
@@ -18,11 +19,11 @@ function PuzzleSlot({ piece }) {
     accept: "PUZZLE_PIECES",
     drop: (item) => {
       if (item.id === piece.id) {
-        playCorrectSound();
+        playSound(SOUND_FILENAMES.CORRECT);
         setIsFilled(true);
         updatePieceFilledStatus(piece.id);
       } else {
-        playWrongSound();
+        playSound(SOUND_FILENAMES.WRONG);
         setIsWrong(true);
         setTimeout(() => setIsWrong(false), 500);
       }

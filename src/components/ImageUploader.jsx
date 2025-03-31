@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 
 import usePuzzleStore from "../store/usePuzzleStore";
+
 import { IMAGE_MESSAGES } from "../constants/imageMessages";
 
 function ImageUploader() {

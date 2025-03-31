@@ -1,9 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 
-import PuzzleSlot from "./PuzzleSlot";
-
 import usePuzzleStore from "../store/usePuzzleStore";
+
+import PuzzleSlot from "./PuzzleSlot";
 
 function PuzzleBoard() {
   const pieces = usePuzzleStore((state) => state.pieces);
