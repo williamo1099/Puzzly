@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 import { PuzzlePieceIcon } from "@heroicons/react/24/solid";
 
-import playSound from "../utils/play-sound";
+import playSound from "../utils/playSound";
 
 import { SOUND_FILENAMES } from "../constants/soundFilenames";
 

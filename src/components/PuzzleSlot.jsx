@@ -3,7 +3,7 @@ import { useDrop } from "react-dnd";
 
 import usePuzzleStore from "../store/usePuzzleStore";
 
-import playSound from "../utils/play-sound";
+import playSound from "../utils/playSound";
 
 import { SOUND_FILENAMES } from "../constants/soundFilenames";
 

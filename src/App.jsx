@@ -5,7 +5,7 @@ import AboutPage from "./pages/About";
 
 function App() {
   return (
-    <div className="w-screen h-screen flex justify-center items-center text-base font-roboto">
+    <div className="w-screen h-screen flex justify-center items-center text-base font-roboto bg-background">
       <Router>
         <Routes>
           <Route path="/" element={<PuzzlePage />} />

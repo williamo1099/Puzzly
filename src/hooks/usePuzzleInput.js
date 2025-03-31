@@ -2,9 +2,9 @@ import { useEffect } from "react";
 
 import usePuzzleStore from "../store/usePuzzleStore";
 
-import playSound from "../utils/play-sound";
-import processImage from "../utils/process-image";
-import showErrorAlert from "../utils/show-error-alert";
+import playSound from "../utils/playSound";
+import processImage from "../utils/processImage";
+import showErrorAlert from "../utils/showErrorAlert";
 
 import { SOUND_FILENAMES } from "../constants/soundFilenames";
 

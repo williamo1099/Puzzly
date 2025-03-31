@@ -1,4 +1,4 @@
-import gcd from "../utils/gcd";
+import gcd from "./gcd";
 
 /**
  * Find an aspect ratio of an image.

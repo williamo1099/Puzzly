@@ -5,7 +5,7 @@ import usePuzzleStore from "../store/usePuzzleStore";
 
 import usePuzzleGame from "../hooks/usePuzzleGame";
 
-import showConfirmationAlert from "../utils/show-confirmation-alert";
+import showConfirmationAlert from "../utils/showConfirmationAlert";
 
 import PuzzlePiece from "./PuzzlePiece";
 import PuzzleBoard from "./PuzzleBoard";

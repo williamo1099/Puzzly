@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 import usePuzzleStore from "../store/usePuzzleStore";
 
-import playSound from "../utils/play-sound";
+import playSound from "../utils/playSound";
 
 import { SOUND_FILENAMES } from "../constants/soundFilenames";
 import { LEVELS } from "../constants/levels";
@@ -30,7 +30,7 @@ function LevelPicker() {
 
   return (
     <div className="flex flex-col items-center gap-1">
-      <div className="relative flex flex-row rounded-full border-2 border-gray-300 p-0">
+      <div className="relative flex flex-row rounded-full border-2 border-gray-400 p-0">
         {/* Sliding background */}
         <motion.div
           className="absolute bg-primary rounded-full h-full w-1/3"
@@ -42,7 +42,7 @@ function LevelPicker() {
                 ? "100%"
                 : "200%",
           }}
-          transition={{ duration: 0.1, ease: "linear" }}
+          transition={{ duration: 0.25, ease: "linear" }}
         />
 
         {LEVELS.map((level) => (
