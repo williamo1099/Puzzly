@@ -37,7 +37,7 @@ function LevelPicker({ levelChangeHandler }) {
           <span
             key={level}
             onClick={() => handleLevelChange(level)}
-            className="cursor-pointer text-center font-bold w-24 py-2 rounded-full z-10 transition-all duration-300"
+            className="cursor-pointer text-center text-black font-bold w-24 py-2 rounded-full z-10 transition-all duration-300"
           >
             {level}
           </span>
@@ -46,7 +46,6 @@ function LevelPicker({ levelChangeHandler }) {
 
       {/* Level Description Message */}
       <motion.span
-        className="text-gray-500"
         initial={{
           opacity: 0.5,
           x: 50,

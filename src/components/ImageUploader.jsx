@@ -79,7 +79,7 @@ function ImageUploader({ fileChangeHandler }) {
               </AnimatePresence>
             </>
           ) : (
-            <div className="flex flex-col items-center justify-center text-gray-500">
+            <div className="flex flex-col items-center justify-center">
               Click to Upload Your Image
             </div>
           )}
@@ -98,7 +98,6 @@ function ImageUploader({ fileChangeHandler }) {
 
       {/* Success message */}
       <motion.span
-        className="text-gray-500"
         initial={{
           opacity: 0.5,
           x: 50,

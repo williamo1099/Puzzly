@@ -26,7 +26,7 @@ function AboutPage() {
         opacity: 1,
       }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="relative flex flex-col items-center justify-center w-full h-full gap-2"
+      className="relative flex flex-col items-center justify-center w-full h-full gap-5"
     >
       {/* Info Button */}
       <InfoButton
@@ -36,8 +36,8 @@ function AboutPage() {
       />
 
       {/* Title */}
-      <h2 className="text-3xl font-bold">
-        About <spa className="bg-primary text-black rounded px-2">Puzzly</spa>
+      <h2 className="text-3xl font-bold text-black">
+        About <spa className="bg-primary rounded px-2">Puzzly</spa>
       </h2>
 
       {/* Image */}
@@ -53,7 +53,7 @@ function AboutPage() {
       </p>
 
       {/* Credit */}
-      <p className="text-sm mt-5">
+      <p className="text-sm mt-3">
         Made with ♥︎ by{" "}
         <a
           className="underline text-primary"

@@ -19,6 +19,8 @@ function PuzzleInputContainer() {
 
   return (
     <div className="relative flex flex-col items-center justify-center h-full w-full gap-7">
+      <img src="/images/logo.png" className="absolute top-5 h-1/12" />
+
       {/* Info Button */}
       <InfoButton
         classNames="top-5 right-5"
