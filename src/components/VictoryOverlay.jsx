@@ -20,16 +20,14 @@ function VictoryOverlay({ resetButtonClickHandler }) {
         transition={{ duration: 0.2, ease: "easeOut" }}
         className="flex flex-col items-center justify-center gap-7"
       >
-        <h1 className="text-4xl font-bold text-red-950">
-          Congratulations! You Win!
-        </h1>
+        <h1 className="text-4xl font-bold text-green-950">You Win!</h1>
 
         <Button
           clickHandler={resetButtonClickHandler}
-          classNames="bg-accent px-4 py-2 rounded-md"
+          classNames="!bg-green-800 text-white px-4 py-2 rounded-md"
           icon={ArrowPathIcon}
         >
-          Play Again
+          Reset
         </Button>
       </motion.div>
     </motion.div>,

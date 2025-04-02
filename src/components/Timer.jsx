@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 
 import usePuzzleStore from "../store/usePuzzleStore";
 
+import { STATUSES } from "../constants/statuses";
+
 function Timer() {
   const duration = usePuzzleStore((state) => state.duration);
   const status = usePuzzleStore((state) => state.status);
@@ -10,8 +12,8 @@ function Timer() {
   const [timeLeft, setTimeLeft] = useState(duration);
 
   useEffect(() => {
-    // Set time is over.
-    if (status === "win" || timeLeft <= 0) {
+    // Stop the timer if there is no time left or status is already win.
+    if (status === STATUSES.WIN || timeLeft <= 0) {
       setIsTimeOver(true);
       return;
     }
@@ -29,7 +31,7 @@ function Timer() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [timeLeft, setIsTimeOver]);
+  }, [timeLeft, status, setIsTimeOver]);
 
   return (
     <span className="text-2xl font-semibold">

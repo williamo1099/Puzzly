@@ -12,6 +12,8 @@ import Button from "./Button";
 import GameOverOverlay from "./GameOverOverlay";
 import VictoryOverlay from "./VictoryOverlay";
 
+import { STATUSES } from "../constants/statuses";
+
 function PuzzleGameContainer() {
   const pieces = usePuzzleStore((state) => state.pieces);
   const status = usePuzzleStore((state) => state.status);
@@ -70,10 +72,10 @@ function PuzzleGameContainer() {
         Reset
       </Button>
 
-      {status === "lose" && (
+      {status === STATUSES.LOSE && (
         <GameOverOverlay resetButtonClickHandler={handleResetButtonClick} />
       )}
-      {status === "win" && (
+      {status === STATUSES.WIN && (
         <VictoryOverlay resetButtonClickHandler={handleResetButtonClick} />
       )}
     </div>

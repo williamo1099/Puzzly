@@ -20,16 +20,15 @@ function GameOverOverlay({ resetButtonClickHandler }) {
         transition={{ duration: 0.2, ease: "easeOut" }}
         className="flex flex-col items-center justify-center gap-7"
       >
-        <h1 className="text-4xl font-bold text-red-950">
-          Time's Up! You Lose!
-        </h1>
+        <h1 className="text-4xl font-bold text-red-950">You Lose!</h1>
 
+        {/* Reset button */}
         <Button
           clickHandler={resetButtonClickHandler}
-          classNames="bg-accent px-4 py-2 rounded-md"
+          classNames="!bg-red-800 text-white px-4 py-2 rounded-md"
           icon={ArrowPathIcon}
         >
-          Try Again
+          Reset
         </Button>
       </motion.div>
     </motion.div>,
