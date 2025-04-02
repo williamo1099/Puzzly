@@ -6,4 +6,5 @@ export const SOUND_FILENAMES = {
   MOVE: "/sounds/move.mp3",
   CORRECT: "/sounds/game/correct.mp3",
   WRONG: "/sounds/game/wrong.mp3",
+  LOSE: "/sounds/game/lose.mp3",
 };

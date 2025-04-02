@@ -9,9 +9,11 @@ import PuzzlePiece from "./PuzzlePiece";
 import PuzzleBoard from "./PuzzleBoard";
 import Timer from "./Timer";
 import Button from "./Button";
+import GameOverOverlay from "./GameOverOverlay";
 
 function PuzzleGameContainer() {
   const pieces = usePuzzleStore((state) => state.pieces);
+  const status = usePuzzleStore((state) => state.status);
   const updatePiecePosition = usePuzzleStore(
     (state) => state.updatePiecePosition
   );
@@ -67,6 +69,10 @@ function PuzzleGameContainer() {
       >
         Reset
       </Button>
+
+      {status === "lose" && (
+        <GameOverOverlay resetButtonClickHandler={handleResetButtonClick} />
+      )}
     </div>
   );
 }

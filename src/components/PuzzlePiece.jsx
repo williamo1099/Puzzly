@@ -24,7 +24,7 @@ function PuzzlePiece({ piece }) {
   return (
     <motion.div
       ref={drag}
-      className="cursor-move z-50"
+      className="cursor-move z-40"
       style={{
         position: "absolute",
         width: piece.width,

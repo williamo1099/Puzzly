@@ -3,6 +3,7 @@ import { create } from "zustand";
 const usePuzzleStore = create((set) => ({
   uploadedImage: null,
   level: "easy",
+  status: "playing",
   pieces: [],
 
   isGameStarted: false,
@@ -11,6 +12,7 @@ const usePuzzleStore = create((set) => ({
 
   setUploadedImage: (image) => set({ uploadedImage: image }),
   setLevel: (level) => set({ level: level }),
+  setStatus: (status) => set({ status: status }),
   setPieces: (pieces) => set({ pieces: pieces }),
   setIsGameStarted: (isGameStarted) => set({ isGameStarted: isGameStarted }),
   setIsTimeOver: (isTimeOver) => set({ isTimeOver: isTimeOver }),
@@ -20,6 +22,7 @@ const usePuzzleStore = create((set) => ({
     set({
       uploadedImage: null,
       level: "easy",
+      status: "playing",
       pieces: [],
       isGameStarted: false,
       isTimeOver: false,
