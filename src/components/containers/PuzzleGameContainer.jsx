@@ -1,20 +1,20 @@
 import { useDrop } from "react-dnd";
 import { ArrowPathIcon, PauseIcon } from "@heroicons/react/24/solid";
 
-import usePuzzleStore from "../store/usePuzzleStore";
+import usePuzzleStore from "../../store/usePuzzleStore";
 
-import usePuzzleGame from "../hooks/usePuzzleGame";
+import usePuzzleGame from "../../hooks/usePuzzleGame";
 
-import PuzzlePiece from "./PuzzlePiece";
-import PuzzleBoard from "./PuzzleBoard";
-import Timer from "./Timer";
-import Button from "./Button";
-import InfoButton from "./InfoButton";
-import GameOverOverlay from "./GameOverOverlay";
-import VictoryOverlay from "./VictoryOverlay";
-import PauseOverlay from "./PauseOverlay";
+import PuzzlePiece from "../PuzzlePiece";
+import PuzzleBoard from "../PuzzleBoard";
+import Timer from "../Timer";
+import Button from "../Button";
+import InfoButton from "../InfoButton";
+import GameOverOverlay from "../overlays/GameOverOverlay";
+import VictoryOverlay from "../overlays/VictoryOverlay";
+import PauseOverlay from "../overlays/PauseOverlay";
 
-import { STATUSES } from "../constants/statuses";
+import { STATUSES } from "../../constants/statuses";
 
 function PuzzleGameContainer() {
   const pieces = usePuzzleStore((state) => state.pieces);

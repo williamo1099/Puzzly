@@ -2,12 +2,12 @@ import React from "react";
 import { InformationCircleIcon } from "@heroicons/react/24/solid";
 import { PuzzlePieceIcon } from "@heroicons/react/24/solid";
 
-import usePuzzleInput from "../hooks/usePuzzleInput";
+import usePuzzleInput from "../../hooks/usePuzzleInput";
 
-import ImageUploader from "./ImageUploader";
-import LevelPicker from "./LevelPicker";
-import Button from "./Button";
-import InfoButton from "./InfoButton";
+import ImageUploader from "../ImageUploader";
+import LevelPicker from "../LevelPicker";
+import Button from "../Button";
+import InfoButton from "../InfoButton";
 
 function PuzzleInputContainer() {
   const {

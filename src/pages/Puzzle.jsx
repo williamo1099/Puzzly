@@ -2,8 +2,8 @@ import React from "react";
 
 import usePuzzleStore from "../store/usePuzzleStore";
 
-import PuzzleInputContainer from "../components/PuzzleInputContainer";
-import PuzzleGameContainer from "../components/PuzzleGameContainer";
+import PuzzleInputContainer from "../components/containers/PuzzleInputContainer";
+import PuzzleGameContainer from "../components/containers/PuzzleGameContainer";
 
 function PuzzlePage() {
   const isGameStarted = usePuzzleStore((state) => state.isGameStarted);
