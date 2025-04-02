@@ -7,14 +7,15 @@ import { STATUSES } from "../constants/statuses";
 function Timer() {
   const duration = usePuzzleStore((state) => state.duration);
   const status = usePuzzleStore((state) => state.status);
+  const isGamePaused = usePuzzleStore((state) => state.isGamePaused);
   const setIsTimeOver = usePuzzleStore((state) => state.setIsTimeOver);
 
   const [timeLeft, setTimeLeft] = useState(duration);
 
   useEffect(() => {
     // Stop the timer if there is no time left or status is already win.
-    if (status === STATUSES.WIN || timeLeft <= 0) {
-      setIsTimeOver(true);
+    if (status === STATUSES.WIN || timeLeft <= 0 || isGamePaused) {
+      if (timeLeft <= 0) setIsTimeOver(true);
       return;
     }
 
@@ -31,7 +32,7 @@ function Timer() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [timeLeft, status, setIsTimeOver]);
+  }, [timeLeft, status, isGamePaused, setIsTimeOver]);
 
   return (
     <span className="text-2xl font-semibold">

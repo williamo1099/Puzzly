@@ -7,6 +7,7 @@ const usePuzzleStore = create((set) => ({
   pieces: [],
 
   isGameStarted: false,
+  isGamePaused: false,
   isTimeOver: false,
   duration: 0,
 
@@ -15,6 +16,7 @@ const usePuzzleStore = create((set) => ({
   setStatus: (status) => set({ status: status }),
   setPieces: (pieces) => set({ pieces: pieces }),
   setIsGameStarted: (isGameStarted) => set({ isGameStarted: isGameStarted }),
+  setIsGamePaused: (isGamePaused) => set({ isGamePaused: isGamePaused }),
   setIsTimeOver: (isTimeOver) => set({ isTimeOver: isTimeOver }),
   setDuration: (duration) => set({ duration: duration }),
 
@@ -25,6 +27,7 @@ const usePuzzleStore = create((set) => ({
       status: "playing",
       pieces: [],
       isGameStarted: false,
+      isGamePaused: false,
       isTimeOver: false,
       duration: 0,
     });

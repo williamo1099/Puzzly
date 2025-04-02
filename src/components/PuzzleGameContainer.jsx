@@ -1,5 +1,5 @@
 import { useDrop } from "react-dnd";
-import { ArrowPathIcon } from "@heroicons/react/24/solid";
+import { ArrowPathIcon, PauseIcon } from "@heroicons/react/24/solid";
 
 import usePuzzleStore from "../store/usePuzzleStore";
 
@@ -9,19 +9,22 @@ import PuzzlePiece from "./PuzzlePiece";
 import PuzzleBoard from "./PuzzleBoard";
 import Timer from "./Timer";
 import Button from "./Button";
+import InfoButton from "./InfoButton";
 import GameOverOverlay from "./GameOverOverlay";
 import VictoryOverlay from "./VictoryOverlay";
+import PauseOverlay from "./PauseOverlay";
 
 import { STATUSES } from "../constants/statuses";
 
 function PuzzleGameContainer() {
   const pieces = usePuzzleStore((state) => state.pieces);
   const status = usePuzzleStore((state) => state.status);
+  const isGamePaused = usePuzzleStore((state) => state.isGamePaused);
   const updatePiecePosition = usePuzzleStore(
     (state) => state.updatePiecePosition
   );
 
-  const { handleResetButtonClick } = usePuzzleGame();
+  const { handleResetButtonClick, handlePauseButtonClick } = usePuzzleGame();
 
   const [, drop] = useDrop(() => ({
     accept: "PUZZLE_PIECES",
@@ -46,7 +49,16 @@ function PuzzleGameContainer() {
   if (pieces.length === 0) return;
 
   return (
-    <div className="flex flex-col items-center justify-center gap-7 h-full">
+    <div className="relative flex flex-col items-center justify-center gap-7 h-full w-full">
+      {/* Info Button */}
+      {!isGamePaused && (
+        <InfoButton
+          classNames="top-5 right-5 z-20"
+          clickHandler={handlePauseButtonClick}
+          icon={PauseIcon}
+        />
+      )}
+
       {/* Progress */}
       <Timer />
 
@@ -71,6 +83,10 @@ function PuzzleGameContainer() {
       >
         Reset
       </Button>
+
+      {isGamePaused && (
+        <PauseOverlay playButtonClickHandler={handlePauseButtonClick} />
+      )}
 
       {status === STATUSES.LOSE && (
         <GameOverOverlay resetButtonClickHandler={handleResetButtonClick} />

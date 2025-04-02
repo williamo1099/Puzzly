@@ -13,8 +13,10 @@ import { SOUND_FILENAMES } from "../constants/soundFilenames";
 function usePuzzleGame() {
   const pieces = usePuzzleStore((state) => state.pieces);
   const status = usePuzzleStore((state) => state.status);
+  const isGamePaused = usePuzzleStore((state) => state.isGamePaused);
   const isTimeOver = usePuzzleStore((state) => state.isTimeOver);
   const setStatus = usePuzzleStore((state) => state.setStatus);
+  const setIsGamePaused = usePuzzleStore((state) => state.setIsGamePaused);
   const reset = usePuzzleStore((state) => state.reset);
 
   /**
@@ -47,6 +49,13 @@ function usePuzzleGame() {
   });
 
   /**
+   * Handle click event for pause button.
+   */
+  const handlePauseButtonClick = withClickSound(() => {
+    setIsGamePaused(!isGamePaused);
+  });
+
+  /**
    * Monitor the progress of the game.
    * If all slots are filled, set status to win.
    */
@@ -71,7 +80,7 @@ function usePuzzleGame() {
     setStatusToLose();
   }, [isTimeOver, status, setStatusToLose]);
 
-  return { handleResetButtonClick };
+  return { handleResetButtonClick, handlePauseButtonClick };
 }
 
 export default usePuzzleGame;
