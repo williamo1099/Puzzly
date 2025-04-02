@@ -4,13 +4,14 @@ import usePuzzleStore from "../store/usePuzzleStore";
 
 function Timer() {
   const duration = usePuzzleStore((state) => state.duration);
+  const status = usePuzzleStore((state) => state.status);
   const setIsTimeOver = usePuzzleStore((state) => state.setIsTimeOver);
 
   const [timeLeft, setTimeLeft] = useState(duration);
 
   useEffect(() => {
     // Set time is over.
-    if (timeLeft <= 0) {
+    if (status === "win" || timeLeft <= 0) {
       setIsTimeOver(true);
       return;
     }

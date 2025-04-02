@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import usePuzzleStore from "../store/usePuzzleStore";
 
@@ -11,11 +11,10 @@ import { SOUND_FILENAMES } from "../constants/soundFilenames";
 
 function usePuzzleGame() {
   const pieces = usePuzzleStore((state) => state.pieces);
+  const status = usePuzzleStore((state) => state.status);
   const isTimeOver = usePuzzleStore((state) => state.isTimeOver);
   const setStatus = usePuzzleStore((state) => state.setStatus);
   const reset = usePuzzleStore((state) => state.reset);
-
-  const [progress, setProgress] = useState(0);
 
   /**
    * Handle click event for reset button.
@@ -34,18 +33,19 @@ function usePuzzleGame() {
     const completedPiecesNumber = pieces.filter(
       (piece) => piece.isFilled
     ).length;
-    const newProgress = completedPiecesNumber / pieces.length;
-    setProgress(newProgress);
+    const progress = completedPiecesNumber / pieces.length;
 
     // Set status to win.
     if (progress === 1) {
+      playSound(SOUND_FILENAMES.VICTORY);
       setStatus("win");
     }
   }, [pieces]);
 
   useEffect(() => {
-    //
     if (!isTimeOver) return;
+
+    if (status === "win") return;
 
     // Play lose sound effect.
     playSound(SOUND_FILENAMES.LOSE);
@@ -54,7 +54,7 @@ function usePuzzleGame() {
     setStatus("lose");
   }, [isTimeOver]);
 
-  return { handleResetButtonClick, progress };
+  return { handleResetButtonClick };
 }
 
 export default usePuzzleGame;

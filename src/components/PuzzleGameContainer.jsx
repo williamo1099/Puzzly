@@ -10,6 +10,7 @@ import PuzzleBoard from "./PuzzleBoard";
 import Timer from "./Timer";
 import Button from "./Button";
 import GameOverOverlay from "./GameOverOverlay";
+import VictoryOverlay from "./VictoryOverlay";
 
 function PuzzleGameContainer() {
   const pieces = usePuzzleStore((state) => state.pieces);
@@ -18,8 +19,7 @@ function PuzzleGameContainer() {
     (state) => state.updatePiecePosition
   );
 
-  // eslint-disable-next-line no-unused-vars
-  const { handleResetButtonClick, progress } = usePuzzleGame();
+  const { handleResetButtonClick } = usePuzzleGame();
 
   const [, drop] = useDrop(() => ({
     accept: "PUZZLE_PIECES",
@@ -72,6 +72,9 @@ function PuzzleGameContainer() {
 
       {status === "lose" && (
         <GameOverOverlay resetButtonClickHandler={handleResetButtonClick} />
+      )}
+      {status === "win" && (
+        <VictoryOverlay resetButtonClickHandler={handleResetButtonClick} />
       )}
     </div>
   );
