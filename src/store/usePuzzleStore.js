@@ -3,28 +3,27 @@ import { create } from "zustand";
 const usePuzzleStore = create((set) => ({
   uploadedImage: null,
   level: "easy",
-  start: false,
   pieces: [],
 
-  setUploadedImage: (image) => {
-    set({ uploadedImage: image });
-  },
-  setLevel: (level) => {
-    set({ level: level });
-  },
-  setStart: (start) => {
-    set({ start: start });
-  },
-  setPieces: (pieces) => {
-    set({ pieces: pieces });
-  },
+  isGameStarted: false,
+  isTimeOver: false,
+  duration: 0,
+
+  setUploadedImage: (image) => set({ uploadedImage: image }),
+  setLevel: (level) => set({ level: level }),
+  setPieces: (pieces) => set({ pieces: pieces }),
+  setIsGameStarted: (isGameStarted) => set({ isGameStarted: isGameStarted }),
+  setIsTimeOver: (isTimeOver) => set({ isTimeOver: isTimeOver }),
+  setDuration: (duration) => set({ duration: duration }),
 
   reset: () => {
     set({
       uploadedImage: null,
       level: "easy",
-      start: false,
       pieces: [],
+      isGameStarted: false,
+      isTimeOver: false,
+      duration: 0,
     });
   },
 

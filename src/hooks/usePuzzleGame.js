@@ -8,6 +8,7 @@ import withClickSound from "../utils/withClickSound";
 
 function usePuzzleGame() {
   const pieces = usePuzzleStore((state) => state.pieces);
+  const isTimeOver = usePuzzleStore((state) => state.isTimeOver);
   const reset = usePuzzleStore((state) => state.reset);
 
   const [progress, setProgress] = useState(0);
@@ -32,6 +33,10 @@ function usePuzzleGame() {
     const newProgress = completedPiecesNumber / pieces.length;
     setProgress(newProgress);
   }, [pieces]);
+
+  useEffect(() => {
+    //
+  }, [isTimeOver]);
 
   return { handleResetButtonClick, progress };
 }

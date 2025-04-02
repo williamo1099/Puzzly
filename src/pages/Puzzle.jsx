@@ -6,9 +6,9 @@ import PuzzleInputContainer from "../components/PuzzleInputContainer";
 import PuzzleGameContainer from "../components/PuzzleGameContainer";
 
 function PuzzlePage() {
-  const start = usePuzzleStore((state) => state.start);
+  const isGameStarted = usePuzzleStore((state) => state.isGameStarted);
 
-  return start ? <PuzzleGameContainer /> : <PuzzleInputContainer />;
+  return isGameStarted ? <PuzzleGameContainer /> : <PuzzleInputContainer />;
 }
 
 export default PuzzlePage;

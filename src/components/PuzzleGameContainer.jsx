@@ -7,6 +7,7 @@ import usePuzzleGame from "../hooks/usePuzzleGame";
 
 import PuzzlePiece from "./PuzzlePiece";
 import PuzzleBoard from "./PuzzleBoard";
+import Timer from "./Timer";
 import Button from "./Button";
 
 function PuzzleGameContainer() {
@@ -15,6 +16,7 @@ function PuzzleGameContainer() {
     (state) => state.updatePiecePosition
   );
 
+  // eslint-disable-next-line no-unused-vars
   const { handleResetButtonClick, progress } = usePuzzleGame();
 
   const [, drop] = useDrop(() => ({
@@ -42,13 +44,7 @@ function PuzzleGameContainer() {
   return (
     <div className="flex flex-col items-center justify-center gap-7 h-full">
       {/* Progress */}
-      {progress === 1 ? (
-        <span className="text-2xl font-bold">
-          Congratulations, you completed the puzzle!
-        </span>
-      ) : (
-        <progress value={progress} className="w-full" />
-      )}
+      <Timer />
 
       {/* Puzzle pieces */}
       <div

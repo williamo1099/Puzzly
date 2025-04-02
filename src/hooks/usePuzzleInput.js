@@ -13,10 +13,12 @@ import { SOUND_FILENAMES } from "../constants/soundFilenames";
 function usePuzzleInput() {
   const uploadedImage = usePuzzleStore((state) => state.uploadedImage);
   const level = usePuzzleStore((state) => state.level);
+  const pieces = usePuzzleStore((state) => state.pieces);
   const setUploadedImage = usePuzzleStore((state) => state.setUploadedImage);
   const setLevel = usePuzzleStore((state) => state.setLevel);
   const setPieces = usePuzzleStore((state) => state.setPieces);
-  const setStart = usePuzzleStore((state) => state.setStart);
+  const setIsGameStarted = usePuzzleStore((state) => state.setIsGameStarted);
+  const setDuration = usePuzzleStore((state) => state.setDuration);
 
   /**
    * Handle click event for button start.
@@ -32,8 +34,12 @@ function usePuzzleInput() {
       return;
     }
 
+    // Set time duration.
+    const duration = pieces.length * 10;
+    setDuration(duration);
+
     // Set start state to true.
-    setStart(true);
+    setIsGameStarted(true);
   });
 
   /**
